@@ -59,7 +59,8 @@ def update_employee(db: Session, employee_id: int, employee: schemas.EmployeeUpd
         )
     
     # Update only provided fields
-    update_data = employee.model_dump(exclude_unset=True)
+    # update_data = employee.model_dump(exclude_unset=True)
+    update_data = employee.model_dump(mode="dict", exclude_unset=True)
     for field, value in update_data.items():
         setattr(db_employee, field, value)
     
